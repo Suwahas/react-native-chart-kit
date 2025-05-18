@@ -649,10 +649,13 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
   };
 
   getXMaxValues = (data: Dataset[]) => {
-    return data.reduce((acc, cur) => {
+    const xmax = data.reduce((acc, cur) => {
       return cur.data.length > acc ? cur.data.length : acc;
     }, 0);
+    return Math.max(1, xmax - 1);
   };
+
+  
 
   getBezierLinePoints = (
     dataset: Dataset,
